@@ -183,7 +183,7 @@ class TestTaxiCalculatorFareCalculation(unittest.TestCase):
             weather_rating=3
         )
         # fare должна быть округлена до сотых
-        self.assertEqual(fare % 1, round(fare % 1, 2))
+        self.assertEqual(fare, round(fare, 2))
 
 
 class TestTaxiCalculatorEdgeCases(unittest.TestCase):
@@ -305,7 +305,7 @@ class TestTaxiCalculatorIntegration(unittest.TestCase):
         )
         # 15 * 200 * 1.25 * 1.05 * 1.25 = 4921.875
         expected = 15 * 200 * 1.25 * 1.05 * 1.25
-        self.assertAlmostEqual(fare, expected, places=2)
+        self.assertAlmostEqual(fare, round(expected, 2), places=2)
 
 
 if __name__ == '__main__':
